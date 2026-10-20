@@ -226,6 +226,10 @@ h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); color: var(--navy-900); 
 }
 .video figcaption { margin-top: 12px; font-size: .9rem; color: var(--ink-muted); }
 .video figcaption a { white-space: nowrap; margin-left: .25em; }
+.artboard { margin: clamp(32px, 5vw, 48px) 0 0; }
+.artboard img { display: block; width: 100%; border-radius: var(--radius); box-shadow: var(--shadow); }
+.artboard figcaption { margin-top: 12px; font-size: .9rem; color: var(--ink-muted); }
+.artboard figcaption a { white-space: nowrap; margin-left: .25em; }
 
 @media (max-width: 859px) { .split { grid-template-columns: 1fr; } }
 
