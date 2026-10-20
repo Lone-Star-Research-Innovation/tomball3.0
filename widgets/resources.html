@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resources | Growing LSC-Tomball 3.0</title>
+  <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light">
+  <!-- Embeddable widget: shown in an <iframe> on the LSC-Tomball 3.0 CMS page.
+       Content comes from js/data.js; edit that file, not this one. -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="widget">
+<main class="widget__body">
+  <h1 class="visually-hidden">Growing LSC-Tomball 3.0: Resources and Documents</h1>
+
+  <div class="library-tools" data-js-only hidden>
+    <div class="search">
+      <label for="resource-search">Search resources</label>
+      <div class="search__field">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <input type="search" id="resource-search" autocomplete="off" aria-describedby="resource-status">
+      </div>
+    </div>
+    <div class="chips" role="group" aria-label="Filter by category" id="category-filters"></div>
+  </div>
+  <p class="filter-status" id="resource-status" aria-live="polite"></p>
+
+  <div id="resource-list" class="resource-groups"></div>
+
+  <noscript>
+    <p class="notice">The resource library needs JavaScript to display. See the <a href="https://www.lonestar.edu/tomball3-0.htm" target="_top">LSC-Tomball 3.0 page</a>.</p>
+  </noscript>
+</main>
+<script src="../js/data.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
