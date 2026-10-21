@@ -120,8 +120,8 @@
 <!-- Widget hosted on GitHub Pages, filtered to GPA+. Content is edited in js/data.js. -->
 <h2><a id="progress"></a>Progress</h2>
 <p>GPA+ milestones from the <a href="https://www.lonestar.edu/tomball3-0.htm">Growing LSC-Tomball 3.0</a> timeline.</p>
-<div style="width:100%"><iframe height="620" loading="lazy" src="https://lone-star-xr-lab.github.io/tomball3-0/widgets/milestones.html?initiative=gpa" style="width:100%" title="GPA+ milestones" width="100%"></iframe></div>
-<p style="text-align:center"><a href="https://lone-star-xr-lab.github.io/tomball3-0/widgets/milestones.html?initiative=gpa" rel="noopener noreferrer" target="_blank">Open GPA+ Milestones in a New Window</a></p>
+<div style="width:100%"><iframe height="620" loading="lazy" src="https://lone-star-research-innovation.github.io/tomball3.0/widgets/milestones.html?initiative=gpa" style="width:100%" title="GPA+ milestones" width="100%"></iframe></div>
+<p style="text-align:center"><a href="https://lone-star-research-innovation.github.io/tomball3.0/widgets/milestones.html?initiative=gpa" rel="noopener noreferrer" target="_blank">Open GPA+ Milestones in a New Window</a></p>
 <h3 class="h5 fw-bold">What We Heard at the Feedback Forums</h3>
 <div class="row g-3 mb-3">
 <div class="col-md-4">
@@ -216,7 +216,7 @@
       img.setAttribute("src", "https://www.lonestar.edu" + img.getAttribute("src"));
     });
     // Until the widgets are deployed, use the local copies in ../widgets/.
-    var live = "https://lone-star-xr-lab.github.io/tomball3-0/";
+    var live = "https://lone-star-research-innovation.github.io/tomball3.0/";
     if (location.href.indexOf(live) === 0) return;
     document.querySelectorAll('a[href^="' + live + '"]').forEach(function (a) {
       a.setAttribute("href", a.getAttribute("href").replace(live, "../"));

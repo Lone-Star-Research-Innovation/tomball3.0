@@ -70,8 +70,8 @@ The static parts (intro, strategies, team) change rarely, so they live in the CM
 4. The sidebar ("Related") is a template field, not part of the content. The preview
    shows the recommended links.
 
-The widget iframes point to `https://lone-star-xr-lab.github.io/tomball3-0/widgets/…`.
-**That address assumes a repository named `tomball3-0` in the `lone-star-xr-lab`
+The widget iframes point to `https://lone-star-research-innovation.github.io/tomball3.0/widgets/…`.
+**That address assumes a repository named `tomball3.0` in the `lone-star-research-innovation`
 organization.** If you use a different name, update the four URLs (two iframes, two
 "Open in a New Window" links) in the content block, plus the `live` address in the
 preview-only script at the bottom of `index.html`.
@@ -193,11 +193,11 @@ The roster is **provisional**. Once someone confirms it, update both places, and
 
 ## Deploying the widgets to GitHub Pages
 
-1. Create the repository (planned: `lone-star-xr-lab/tomball3-0`) and push these files
+1. Create the repository (planned: `lone-star-research-innovation/tomball3.0`) and push these files
    to `main`.
 2. In **Settings → Pages**, set **Source** to *Deploy from a branch*, then choose
    `main` / `/ (root)`.
-3. Check `https://lone-star-xr-lab.github.io/tomball3-0/widgets/milestones.html` loads.
+3. Check `https://lone-star-research-innovation.github.io/tomball3.0/widgets/milestones.html` loads.
 4. Then paste the content block into the CMS.
 
 The same deployment also hosts the CMS preview (site root) and the modern option
