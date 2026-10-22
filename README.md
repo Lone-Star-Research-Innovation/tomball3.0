@@ -24,7 +24,8 @@ tomball3.0/
 ├── gpa-plus/index.html     CMS version of the GPA+ sub-page (lonestar.edu/118051)
 ├── widgets/
 │   ├── milestones.html     Embeddable timeline with year filter (iframe on the CMS page)
-│   └── resources.html      Embeddable resource library with search and categories
+│   ├── resources.html      Embeddable resource library with search and categories
+│   └── team.html           Embeddable Core Design Team roster
 ├── modern/index.html       Modern standalone design option
 ├── js/data.js              ← CONTENT: milestones, resources, team (used by widgets + modern)
 ├── js/main.js              Shared behavior: renders data.js, filters, search, icons
@@ -46,8 +47,8 @@ working on the XR Lab and RIC pages:
 | `<h2><a id="x"></a>…</h2>` + pipe-separated link bar | In-page navigation | RIC |
 | `<p class="ratio ratio-16x9"><iframe>` | President's video | XR Lab, RIC |
 | `<a class="btn btn-primary">` | Strategic plan button | XR Lab, RIC |
-| `<div style="width:100%"><iframe … github.io …>` + "Open in a New Window" link | Milestones and Resources widgets | RIC (`ric-events`) |
-| Bootstrap `card` / `row` / `col-md-6` classes on `<div>`s | Strategy cards, team groups | Classes and `<div>`s survive on RIC; the cards themselves are untested |
+| `<div style="width:100%"><iframe … github.io …>` + "Open in a New Window" link | Milestones, Resources, and Core Design Team widgets | RIC (`ric-events`) |
+| Bootstrap `card` / `row` / `col-md-6` classes on `<div>`s | Strategy cards | Classes and `<div>`s survive on RIC; the cards themselves are untested. The team section used to work this way too, but the editor stripped the `<div>`s on save, so it's now a widget like the ones above. |
 
 The site already loads **Bootstrap 5.3.3**, so its classes work without adding any CSS.
 The site also automatically adds PDF and external-link icons to matching links.
@@ -79,9 +80,10 @@ preview-only script at the bottom of `index.html`.
 ### Iframe heights
 
 The widgets sit in fixed-height iframes, the same as `ric-events`: milestones at
-`height="1400"`, resources at `height="1600"`. Those heights fit everything on
-desktop. On phones the widget scrolls inside its frame, and the "Open in a New Window"
-link gives a full-screen view. If you add many items, raise the `height` values.
+`height="1400"`, resources at `height="1600"`, team at `height="600"`. Those heights
+fit everything on desktop. On phones the widget scrolls inside its frame, and the
+"Open in a New Window" link gives a full-screen view. If you add many items, raise
+the `height` values.
 
 ## Previewing locally
 
@@ -176,14 +178,12 @@ order of categories. Categories with no items are hidden automatically.
 
 ### Update the Core Design Team
 
-The team appears in two places:
+Like milestones and resources, the team roster is edited in one place — the `team`
+list in `data.js` — and rendered by both `widgets/team.html` (embedded on the CMS
+page) and the modern option. No CMS update needed to change a name or title.
 
-- **CMS version:** written directly in the content block of `index.html`, so changes
-  need a CMS update.
-- **Modern option:** the `team` list in `data.js`.
-
-The roster is **provisional**. Once someone confirms it, update both places, and set
-`rosterVerified: true` in `data.js` to remove the notice on the modern page.
+The roster is **provisional**. Once someone confirms it, set `rosterVerified: true`
+in `data.js` to remove the "pending verification" notice.
 
 ### After any edit
 
@@ -257,7 +257,7 @@ YouTube video has accurate captions (WCAG 1.2.2).
 | 8 | **Milestone descriptions** | Kept to what official sources state. Have the initiative owners review the wording. |
 | 9 | **Upcoming dates** | The latest milestone on the official page is June 22, 2026. Add any newer dates. |
 | 10 | **Video captions** | Confirm the president's video has accurate captions. |
-| 11 | **Bootstrap cards in the CMS** | Strategy and team cards use `card`/`row` classes on `<div>`s. Classes and `<div>`s survive on the RIC page, but cards haven't been tried. If the editor strips them, the content still reads fine as plain headings and paragraphs. |
+| 11 | **Bootstrap cards in the CMS** | Strategy cards use `card`/`row` classes on `<div>`s, which haven't been tried in the live editor. If it strips them, the content still reads fine as plain headings and paragraphs — the team section hit exactly this and was moved to a widget instead. |
 | 12 | **GPA+ team roster** | Copied from the current GPA+ page; likely needs the same review as the Core Design Team. "Tiffani Wooten" here vs. "Tiffany Wooten" on the main page. |
 | 13 | **GPA+ statistics** | The NACE Job Outlook 2025 figures (75% → 46%) and LinkedIn's 69% come from the current page and strategic plan, which give no direct citation links. Confirm them, and consider linking the reports. |
 | 14 | **GPA+ quotation fix** | The current page opens a quote it never closes ("…and “demonstrated proficiency in competencies replace GPA."). The redesign quotes only *demonstrated proficiency in competencies*. Confirm that matches the NACE report. |

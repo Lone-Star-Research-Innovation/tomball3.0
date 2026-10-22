@@ -234,18 +234,15 @@ window.TOMBALL3 = {
       group: "College Leadership",
       members: [
         { name: "Dr. Jackie Thomas", title: "Vice President, Student Success" },
-        { name: "Dr. Jerrel Wade", title: "Vice President, Administrative Services" },
-        { name: "Dr. Katerina Wingfield", title: "Dean, Academic Affairs" }
+        { name: "Dr. Jerrel Wade", title: "Vice President, Administrative Services" }
       ]
     },
     {
       group: "Faculty & Staff",
       members: [
-        { name: "Gracia Talbott", title: "Coordinator III, Professional Development" },
-        { name: "Isabelle Chen", title: "Coordinator III, Research and Innovation" },
+        { name: "Gracia Talbott", title: "Coordinator III, Research and Innovation" },
         { name: "Kawan Jaramillo", title: "Analyst II, Institutional Research, Lone Star College" },
-        { name: "Kimberly Williams", title: "Professor, Mathematics" },
-        { name: "Sarah Ho", title: "Director of Advising" }
+        { name: "Kimberly Williams", title: "Professor, Mathematics" }
       ]
     },
     {
