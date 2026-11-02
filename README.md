@@ -8,7 +8,7 @@ There are two versions:
 | Version | File | What it is |
 |---------|------|------------|
 | **CMS version (main)** | `index.html` | Built within the limits of the college CMS, using the same techniques as the [XR Lab](https://www.lonestar.edu/Tomball-XR-Lab) and [RIC](https://www.lonestar.edu/tomball-ric) pages. This is the version intended for lonestar.edu. |
-| **GPA+ sub-page (CMS)** | `gpa-plus/index.html` | Redesign of [Transferable Skills Benchmark GPA +](https://www.lonestar.edu/118051), a sub-page of the 3.0 page. Same approach as the main CMS version. |
+| **Strategy sub-pages (CMS)** | `corridor-249/`, `neurodiversity/`, `gpa-plus/` | Redesigns of the three strategy pages: [249 Corridor](https://www.lonestar.edu/118049), [Neurodiversity Center](https://www.lonestar.edu/118050), and [GPA+](https://www.lonestar.edu/118051). Lighter versions of the main page's look. |
 | **Modern option** | `modern/index.html` | A fully custom standalone design. It shows what the page could look like without CMS limits, and it's the source of the CMS version's interactive widgets. |
 
 Both are plain HTML, CSS, and JavaScript, with no framework, no build step, and
@@ -21,6 +21,8 @@ nothing to install. Neither is an official Lone Star College page.
 ```
 tomball3.0/
 ├── index.html              CMS version (main): page content + preview wrapper
+├── corridor-249/index.html CMS version of the 249 Corridor sub-page (lonestar.edu/118049)
+├── neurodiversity/index.html CMS version of the Neurodiversity sub-page (lonestar.edu/118050)
 ├── gpa-plus/index.html     CMS version of the GPA+ sub-page (lonestar.edu/118051)
 ├── widgets/
 │   ├── milestones.html     Embeddable timeline with year filter (iframe on the CMS page)
@@ -68,8 +70,9 @@ The static parts (intro, strategies, team) change rarely, so they live in the CM
 1. Open `index.html` in a text editor.
 2. Copy everything between `BEGIN CMS CONTENT` and `END CMS CONTENT`.
 3. Paste it into the CMS page's HTML/source view.
-4. The sidebar ("Related") is a template field, not part of the content. The preview
-   shows the recommended links.
+4. **Full width, no sidebar.** The design assumes the page uses the CMS's full-width
+   (no-sidebar) layout. The sidebar is a template setting, not part of the content, so
+   ask the web team to turn it off for the 3.0 page and its three strategy pages.
 
 The widget iframes point to `https://lone-star-research-innovation.github.io/tomball3.0/widgets/…`.
 **That address assumes a repository named `tomball3.0` in the `lone-star-research-innovation`
@@ -98,7 +101,36 @@ Double-click `index.html` (CMS version) or `modern/index.html` (modern option).
   "Watch on YouTube" link; the CMS preview shows YouTube's error box. Both play normally
   from a web server (for example VS Code's *Live Server* extension, or GitHub Pages).
 
-## GPA+ sub-page
+## Look and feel
+
+The CMS pages borrow patterns from [lonestar.edu/admissions.htm](https://www.lonestar.edu/admissions.htm),
+using only classes from the site's own `style.css` (which also loads Bootstrap 5.3.3 and
+Font Awesome 5 Pro):
+
+| Pattern | Markup | Used on |
+|---------|--------|---------|
+| Hero banner | `<div>` with an inline `linear-gradient(...), url(photo)` background, white text | Main page |
+| Navy band / callout | `<div class="section-dark rounded p-4">` | Main page (jump menu, Three Strategies); sub-pages (goal statement) |
+| Icon row | `icon-stacks icon-stacks-sm` → `icon-stack` → `icon-sm` + `<i class="fas …">` | Main page |
+| Icon cards | `card h-100 rounded shadow-sm` with `fa-2x` icon | Main page (strategies) |
+| Soft cards | `card h-100 rounded shadow-sm border-0` | Sub-pages (framework, stats) |
+
+**Gotcha:** `section-dark` turns all headings, paragraphs, and links white, including
+inside white cards. Add `text-dark` to card text and `text-white` to band headings.
+
+The admissions hero itself comes from LSC's *landing page* template (full-bleed photo
+replacing the page title). The main page recreates it inside the content block; for
+the exact admissions look, the web team would switch the page to that template.
+
+## Strategy sub-pages
+
+The 249 Corridor and Neurodiversity pages share one simple layout: page photo (or map),
+navy goal-statement callout, description, College 3.0 Framework cards, page-specific
+lists, and links to the other strategies. Neurodiversity embeds the milestones widget
+filtered with `?initiative=neurodiversity`. No milestones are tagged `249` yet, so the
+249 page keeps its dated lists in the content block.
+
+### GPA+ sub-page
 
 `gpa-plus/index.html` redesigns <https://www.lonestar.edu/118051> and is copied into
 the CMS the same way (the block between the BEGIN/END markers). Sections:
@@ -112,7 +144,7 @@ the CMS the same way (the block between the BEGIN/END markers). Sections:
 | Progress | Milestones widget filtered to GPA+ (`milestones.html?initiative=gpa`) | `js/data.js` |
 | What We Heard | Three themes, each with a participant quote | **New:** Feedback Forum Results by Initiative (cited on the page) |
 | Resources | News story, Dell agenda, forum results, strategic plan | Existing official documents |
-| GPA+ Team | 10 names in two columns | Current page (provisional) |
+| GPA+ Team | Team widget (`team.html?team=gpa`): 10 names in two group cards | Current page (provisional); edit in `data.js` → `strategyTeams.gpa` |
 
 The two **New** sections add official content that isn't on the current page. Remove
 them if they should stay off the page until approved.
@@ -184,6 +216,11 @@ page) and the modern option. No CMS update needed to change a name or title.
 
 The roster is **provisional**. Once someone confirms it, set `rosterVerified: true`
 in `data.js` to remove the "pending verification" notice.
+
+Strategy teams work the same way, under `strategyTeams` in `data.js`. A sub-page embeds
+`widgets/team.html?team=neurodiversity` to show that team's cards. Each team has its own
+`verified` flag. To add GPA+ or 249 team cards, add a `gpa` or `249` entry there and embed
+the widget with that key.
 
 ### After any edit
 
@@ -257,8 +294,8 @@ YouTube video has accurate captions (WCAG 1.2.2).
 | 8 | **Milestone descriptions** | Kept to what official sources state. Have the initiative owners review the wording. |
 | 9 | **Upcoming dates** | The latest milestone on the official page is June 22, 2026. Add any newer dates. |
 | 10 | **Video captions** | Confirm the president's video has accurate captions. |
-| 11 | **Bootstrap cards in the CMS** | Strategy cards use `card`/`row` classes on `<div>`s, which haven't been tried in the live editor. If it strips them, the content still reads fine as plain headings and paragraphs — the team section hit exactly this and was moved to a widget instead. |
-| 12 | **GPA+ team roster** | Copied from the current GPA+ page; likely needs the same review as the Core Design Team. "Tiffani Wooten" here vs. "Tiffany Wooten" on the main page. |
+| 11 | **`<div>`s and inline styles in the CMS** | The hero, navy bands, and cards are all `<div>`s, and the hero uses an inline `style` background. The editor stripped `<div>`s from the team section before. **Test-paste the main page into a draft first.** If it strips them, the hero's white text would sit on a white page, so remove the hero rather than publish it that way. |
+| 12 | **GPA+ and Neurodiversity team rosters** | Copied from the current strategy pages, with no job titles; likely need the same review as the Core Design Team. Set each team's `verified: true` in `data.js` once confirmed. "Tiffani Wooten" here vs. "Tiffany Wooten" on the main page. |
 | 13 | **GPA+ statistics** | The NACE Job Outlook 2025 figures (75% → 46%) and LinkedIn's 69% come from the current page and strategic plan, which give no direct citation links. Confirm them, and consider linking the reports. |
 | 14 | **GPA+ quotation fix** | The current page opens a quote it never closes ("…and “demonstrated proficiency in competencies replace GPA."). The redesign quotes only *demonstrated proficiency in competencies*. Confirm that matches the NACE report. |
 | 15 | **GPA+ page title** | The CMS title is "Transferable Skills Benchmark GPA +" (with a space before the +). Consider "Transferable Skills Benchmark (GPA+)" to match the text; see item 3. |

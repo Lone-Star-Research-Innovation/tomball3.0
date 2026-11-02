@@ -259,5 +259,66 @@ window.TOMBALL3 = {
         { name: "Emily White", title: "LSC-Tomball student" }
       ]
     }
-  ]
+  ],
+
+  /* ------------------------------------------------------------------------
+   * STRATEGY TEAMS
+   * Rosters for the strategy sub-pages, which embed the team widget as
+   * widgets/team.html?team=neurodiversity (etc.). Same format as the Core
+   * Design Team above; each team has its own "verified" flag.
+   * PROVISIONAL: names copied from lonestar.edu/118050 and /118051 on
+   * 2026-11-02. Those pages list no job titles; add a title to each member
+   * once confirmed. "Tiffani Wooten" (GPA+ page) may be the Core Design
+   * Team's "Tiffany Wooten" — confirm the spelling and her role.
+   * ---------------------------------------------------------------------- */
+  strategyTeams: {
+    neurodiversity: {
+      verified: false,
+      groups: [
+        {
+          group: "Faculty & Staff",
+          members: [
+            { name: "Anne Ginnett" },
+            { name: "Linda Ford" },
+            { name: "Laura Dupree" },
+            { name: "Tammy Spencer" },
+            { name: "Montisha Hines-Goosby" },
+            { name: "Sarah Stewart" }
+          ]
+        },
+        {
+          group: "Students & Families",
+          members: [
+            { name: "Mario Barker", title: "lifePATH student" },
+            { name: "Traqina Emeka", title: "lifePATH parent" }
+          ]
+        }
+      ]
+    },
+    gpa: {
+      verified: false,
+      groups: [
+        {
+          group: "Team Members",
+          members: [
+            { name: "Ken Odom" },
+            { name: "Bill Simcik" },
+            { name: "Carlos Aguilar" },
+            { name: "Jeffery Hastings" },
+            { name: "Maria Solis" },
+            { name: "Chinda Acosta" },
+            { name: "Anthony Froelich" },
+            { name: "Tiffani Wooten" },
+            { name: "Pat Lyon" }
+          ]
+        },
+        {
+          group: "Students",
+          members: [
+            { name: "Vicky Doan" }
+          ]
+        }
+      ]
+    }
+  }
 };

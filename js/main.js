@@ -379,18 +379,27 @@
     var noticeEl = document.getElementById("roster-notice");
     if (!listEl) return;
 
-    if (!data.rosterVerified) {
+    // Strategy pages embed this widget as team.html?team=neurodiversity (etc.)
+    // to show that strategy's roster instead of the Core Design Team.
+    var key = new URLSearchParams(location.search).get("team");
+    var strategy = key && data.strategyTeams ? data.strategyTeams[key] : null;
+    var verified = strategy ? strategy.verified : data.rosterVerified;
+    var teamGroups = strategy ? strategy.groups : data.team;
+
+    if (!verified) {
       noticeEl.replaceChildren(h("div", { class: "notice", role: "note" },
         h("span", null, h("strong", null, "Roster pending verification. "),
           "These names are carried over from the current public page and may be out of date. Confirm before publishing.")));
     }
 
-    var groups = (data.team || []).filter(function (g) { return g.members && g.members.length; });
+    var groups = (teamGroups || []).filter(function (g) { return g.members && g.members.length; });
     if (!groups.length) {
       showError(listEl, "No team members found. Check js/data.js.");
       return;
     }
 
+    // Fewer than four groups fill the row instead of leaving empty columns.
+    listEl.style.setProperty("--team-cols", Math.min(groups.length, 4));
     listEl.replaceChildren.apply(listEl, groups.map(function (g) {
       return h("div", { class: "team-group" },
         h("h3", { text: g.group }),
