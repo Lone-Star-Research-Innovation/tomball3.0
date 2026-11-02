@@ -289,7 +289,7 @@ YouTube video has accurate captions (WCAG 1.2.2).
 |---|------|-----|
 | 1 | **Core Design Team roster** | Copied from the live page and flagged as needing updates. Fixed the live page's typo "Willliams" → "Williams". |
 | 2 | **Tiffany Wooten** vs. **Tiffani Wooten** | Core Design Team spells it "Tiffany"; the GPA+ team page spells it "Tiffani". |
-| 3 | **GPA+ official name** | The live page says "Transferable Skills Benchmark or GPA +", the strategic plan says "GPA + Professional Competencies Quotient", and the news story says "GPA + Transferable Skills Benchmark". This redesign uses "Transferable Skills Benchmark (GPA+)". |
+| 3 | **GPA+ official name** | The live page says "Transferable Skills Benchmark or GPA +", the strategic plan says "GPA + Professional Competencies Quotient", and the news story says "GPA + Transferable Skills Benchmark". This redesign leads with "GPA+" (the name most people use), described as the Transferable Skills Benchmark: "GPA+ \| Transferable Skills Benchmark" in titles. |
 | 4 | **State of the College PDF** | It's an exported email from the president that refers to a recording "for employees' internal use." Confirm it's meant to be public, or replace it. |
 | 5 | **Strategic Planning Survey link** | The SurveyMonkey survey is closed. Listed as historical; remove if not useful. |
 | 6 | **Campus Priorities Survey Report** | Unclear whether these are results of the April 11, 2025 survey. If they are, link it from that milestone. |
@@ -301,7 +301,7 @@ YouTube video has accurate captions (WCAG 1.2.2).
 | 12 | **GPA+ and Neurodiversity team rosters** | Copied from the current strategy pages, with no job titles; likely need the same review as the Core Design Team. Set each team's `verified: true` in `data.js` once confirmed. "Tiffani Wooten" here vs. "Tiffany Wooten" on the main page. |
 | 13 | **GPA+ statistics** | The NACE Job Outlook 2025 figures (75% → 46%) and LinkedIn's 69% come from the current page and strategic plan, which give no direct citation links. Confirm them, and consider linking the reports. |
 | 14 | **GPA+ quotation fix** | The current page opens a quote it never closes ("…and “demonstrated proficiency in competencies replace GPA."). The redesign quotes only *demonstrated proficiency in competencies*. Confirm that matches the NACE report. |
-| 15 | **GPA+ page title** | The CMS title is "Transferable Skills Benchmark GPA +" (with a space before the +). Consider "Transferable Skills Benchmark (GPA+)" to match the text; see item 3. |
+| 15 | **GPA+ page title** | The CMS title is "Transferable Skills Benchmark GPA +" (with a space before the +). The preview uses "GPA+ \| Transferable Skills Benchmark", like "249 Corridor of Opportunity \| Team 249". The title is a CMS page setting, so ask the web team to rename it; see item 3. |
 
 All 16 links from the official 3.0 page returned HTTP 200 on 2026-10-13.
 # tomball3.0
