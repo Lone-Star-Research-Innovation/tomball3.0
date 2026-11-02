@@ -127,7 +127,10 @@ the exact admissions look, the web team would switch the page to that template.
 The 249 Corridor and Neurodiversity pages share one simple layout: page photo (or map),
 navy goal-statement callout, description, College 3.0 Framework cards, page-specific
 lists, and links to the other strategies. Neurodiversity embeds the milestones widget
-filtered with `?initiative=neurodiversity`. No milestones are tagged `249` yet, so the
+filtered with `?initiative=neurodiversity`, three "What We Heard" quotes from the
+[Feedback Forum Results by Initiative](https://www.lonestar.edu/departments/academicaffairsstusuccess/Feedback%20Forum%20Results%20by%20Initiative.pdf)
+(cited on the page; checked word for word against the PDF), and the team widget
+(`team.html?team=neurodiversity`). No milestones are tagged `249` yet, so the
 249 page keeps its dated lists in the content block.
 
 ### GPA+ sub-page
