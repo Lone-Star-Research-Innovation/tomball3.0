@@ -109,7 +109,7 @@ Font Awesome 5 Pro):
 
 | Pattern | Markup | Used on |
 |---------|--------|---------|
-| Hero banner | `<div>` with an inline `linear-gradient(...), url(photo)` background, white text | Main page |
+| Hero banner | A real `<img>` (`position-absolute w-100 h-100 object-fit-cover opacity-50`) over `bg-dark`, white text on top. No inline styles: the CMS stripped the earlier inline `background: url(...)` | Main page |
 | Navy band / callout | `<div class="section-dark rounded p-4">` | Main page (jump menu, Three Strategies); sub-pages (goal statement) |
 | Icon row | `icon-stacks icon-stacks-sm` → `icon-stack` → `icon-sm` + `<i class="fas …">` | Main page |
 | Icon cards | `card h-100 rounded shadow-sm` with `fa-2x` icon | Main page (strategies) |
@@ -297,7 +297,7 @@ YouTube video has accurate captions (WCAG 1.2.2).
 | 8 | **Milestone descriptions** | Kept to what official sources state. Have the initiative owners review the wording. |
 | 9 | **Upcoming dates** | The latest milestone on the official page is June 22, 2026. Add any newer dates. |
 | 10 | **Video captions** | Confirm the president's video has accurate captions. |
-| 11 | **`<div>`s and inline styles in the CMS** | The hero, navy bands, and cards are all `<div>`s, and the hero uses an inline `style` background. The editor stripped `<div>`s from the team section before. **Test-paste the main page into a draft first.** If it strips them, the hero's white text would sit on a white page, so remove the hero rather than publish it that way. |
+| 11 | **`<div>`s and inline styles in the CMS** | The hero, navy bands, and cards are all `<div>`s. (The hero used to have an inline `style` background, which the CMS dropped, so it now uses an `<img>` and Bootstrap classes only.) The editor stripped `<div>`s from the team section before. **Test-paste the main page into a draft first.** If it strips them, the hero's white text would sit on a white page, so remove the hero rather than publish it that way. |
 | 12 | **GPA+ and Neurodiversity team rosters** | Copied from the current strategy pages, with no job titles; likely need the same review as the Core Design Team. Set each team's `verified: true` in `data.js` once confirmed. "Tiffani Wooten" here vs. "Tiffany Wooten" on the main page. |
 | 13 | **GPA+ statistics** | The NACE Job Outlook 2025 figures (75% → 46%) and LinkedIn's 69% come from the current page and strategic plan, which give no direct citation links. Confirm them, and consider linking the reports. |
 | 14 | **GPA+ quotation fix** | The current page opens a quote it never closes ("…and “demonstrated proficiency in competencies replace GPA."). The redesign quotes only *demonstrated proficiency in competencies*. Confirm that matches the NACE report. |
