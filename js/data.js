@@ -53,6 +53,28 @@ window.TOMBALL3 = {
       description: "Kickoff of LSC-Tomball's work in the Reimagining Community Colleges Design Challenge."
     },
     {
+      date: "2025-05-23",
+      initiative: "249",
+      title: "Advising Summit"
+    },
+    {
+      date: "2025-06-26",
+      initiative: "249",
+      title: "Memo From Magnolia, issue 1",
+      links: [
+        { label: "Memo From Magnolia, issue 1", url: "https://www.lonestar.edu/departments/academicaffairsstusuccess/Memo%20from%20Magnolia%20Center%20-%20Launch!.pdf", type: "pdf" }
+      ]
+    },
+    {
+      date: "2025-07-14",
+      initiative: "249",
+      title: "Magnolia Center Update",
+      description: "Informational virtual meeting.",
+      links: [
+        { label: "Meeting recording", url: "https://lonestar.webex.com/recordingservice/sites/lonestar/recording/8dd9e9e1dc9f4ab3bd543a534bbbebe2/playback", type: "web" }
+      ]
+    },
+    {
       date: "2025-07-01",
       endDate: "2025-08-31",
       dateLabel: "July–August 2025",
@@ -68,6 +90,11 @@ window.TOMBALL3 = {
         { label: "Results by session", url: "https://www.lonestar.edu/departments/academicaffairsstusuccess/Feedback%20Forum%20Results%20by%20Session.pdf", type: "pdf" },
         { label: "Results by initiative", url: "https://www.lonestar.edu/departments/academicaffairsstusuccess/Feedback%20Forum%20Results%20by%20Initiative.pdf", type: "pdf" }
       ]
+    },
+    {
+      date: "2025-10-14",
+      initiative: "249",
+      title: "Community Partnership Alliance"
     },
     {
       date: "2025-10-20",

@@ -261,13 +261,24 @@
 
   /* ---------- What's next ---------- */
 
+  // Where each strategy page's milestones live, for the "All milestones" link
+  // when the bar is embedded as next.html?initiative=gpa (etc.).
+  var STRATEGY_MILESTONES = {
+    "249": "https://www.lonestar.edu/118049#progress",
+    neurodiversity: "https://www.lonestar.edu/118050#progress",
+    gpa: "https://www.lonestar.edu/118051#progress"
+  };
+
   // One-line callout: the next milestone that hasn't finished, or the most
   // recent completed one when nothing upcoming is in data.js.
   function initNext() {
     var el = document.getElementById("next-milestone");
     if (!el) return;
     var now = today();
-    var items = (data.milestones || []).map(function (m) {
+    var only = new URLSearchParams(location.search).get("initiative");
+    var items = (data.milestones || []).filter(function (m) {
+      return !only || initiativesOf(m).indexOf(only) !== -1;
+    }).map(function (m) {
       var start = parseDate(m.date);
       return start ? { raw: m, start: start, end: parseDate(m.endDate) || start } : null;
     }).filter(Boolean).sort(function (a, b) { return a.start - b.start; });
@@ -286,7 +297,7 @@
           h("time", { datetime: m.date, text: m.dateLabel || formatRange(it.start, parseDate(m.endDate)) }),
           h("span", { class: "next__sep", "aria-hidden": "true", text: " · " }),
           m.title)),
-      h("a", { class: "next__link", href: "https://www.lonestar.edu/tomball3-0.htm#milestones", target: "_top" },
+      h("a", { class: "next__link", href: (only && STRATEGY_MILESTONES[only]) || "https://www.lonestar.edu/tomball3-0.htm#milestones", target: "_top" },
         "All milestones", icon("arrow"))));
   }
 

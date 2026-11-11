@@ -76,6 +76,11 @@ page shows its own. Small red "eyebrow" labels above each heading use Bootstrap'
 (`<a id="about">Our Vision</a>`) so the anchors aren't empty, because the CMS adds a `<br />`
 after an empty anchor at the start of a heading.
 
+**Paragraph spacing:** the site's stylesheet gives every paragraph 30px below and adds
+10px above a paragraph that follows another, which made the pages look gappy. Every `<p>`
+in the CMS content now carries `mb-3 pt-0` (or its own `mb-*`), which overrides both. Keep
+adding those classes to new paragraphs.
+
 ### Copying into the CMS
 
 1. Open `index.html` in a text editor.
@@ -146,15 +151,18 @@ the exact admissions look, the web team would switch the page to that template.
 
 All three strategy pages follow the main page's layout:
 
-1. **Photo hero:** the page photo (or the 249 map) shown whole, with a slim navy bar
-   under it: the strategy term, a short headline, and "See the Framework" /
+1. **Photo hero:** the page photo shown whole, with a slim navy bar under it (the 249
+   page has no photo in its hero; its map sits beside the About text instead): the strategy term, a short headline, and "See the Framework" /
    "Strategic Plan (PDF)" buttons. The headlines are drafts written from each goal
    statement and need approval:
    - 249: "Three LSC locations, one corridor of opportunity along SH-249"
    - Neurodiversity: "Opening doors to college, completion, and careers for neurodiverse students"
    - GPA+: "Helping students show employers the skills behind their GPA"
    The goal statement itself sits in a callout at the top of each page's About section.
-2. **Jump-link bar:** a navy bar of in-page links (sections differ per page).
+2. **Jump-link bar:** a navy bar of in-page links (sections differ per page), then a
+   "Latest milestone" bar: `widgets/next.html?initiative=249` (or `gpa`, `neurodiversity`)
+   shows that strategy's next upcoming milestone, or its latest one. Its "All milestones"
+   link goes to that strategy page's `#progress` section.
 3. **Sections:** each opens with a small red label and an `h2`; the label holds the
    anchor (`<a id="framework">The Path Forward</a>`) so no anchor is empty.
 4. **College 3.0 Framework:** the 1.0 → 3.0 cards in a light gray band, with a source
@@ -166,13 +174,15 @@ All three strategy pages follow the main page's layout:
    page 10). The hero's "Strategic Plan (PDF)" button opens at the section start. Adding
    `#page=` means the site's automatic PDF icon (`a[href$=".pdf"]`) no longer applies, so
    the link text says "PDF" instead. If the plan PDF is replaced, re-check these numbers.
-5. **Milestones:** the milestones widget filtered to that strategy (GPA+ and
-   Neurodiversity). No milestones are tagged `249` yet, so the 249 page keeps its dated
-   "Updates" lists in the content block.
+5. **Milestones:** the milestones widget filtered to that strategy
+   (`milestones.html?initiative=249`, `gpa`, or `neurodiversity`). The 249 page's old
+   "Updates" lists are now milestones in `data.js` tagged `249`, so they also appear on the
+   main page's timeline, and new 249 updates need only a `data.js` edit and a push.
 6. **Other Strategies:** a navy strip linking the other two strategies and the main page,
    then Back to Top.
 
-Neurodiversity also has three "What We Heard" quotes from the
+Neurodiversity also has a Resources section (Feedback Forum results; strategic plan
+pages 6–7) and three "What We Heard" quotes from the
 [Feedback Forum Results by Initiative](https://www.lonestar.edu/departments/academicaffairsstusuccess/Feedback%20Forum%20Results%20by%20Initiative.pdf)
 (cited on the page; checked word for word against the PDF).
 
