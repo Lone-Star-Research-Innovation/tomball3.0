@@ -147,7 +147,13 @@ the exact admissions look, the web team would switch the page to that template.
 All three strategy pages follow the main page's layout:
 
 1. **Photo hero:** the page photo (or the 249 map) shown whole, with a slim navy bar
-   under it holding the goal statement.
+   under it: the strategy term, a short headline, and "See the Framework" /
+   "Strategic Plan (PDF)" buttons. The headlines are drafts written from each goal
+   statement and need approval:
+   - 249: "Three LSC locations, one corridor of opportunity along SH-249"
+   - Neurodiversity: "Opening doors to college, completion, and careers for neurodiverse students"
+   - GPA+: "Helping students show employers the skills behind their GPA"
+   The goal statement itself sits in a callout at the top of each page's About section.
 2. **Jump-link bar:** a navy bar of in-page links (sections differ per page).
 3. **Sections:** each opens with a small red label and an `h2`; the label holds the
    anchor (`<a id="framework">The Path Forward</a>`) so no anchor is empty.
