@@ -298,7 +298,7 @@ h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); color: var(--navy-900); 
 
 /* ---------- Timeline ---------- */
 .timeline { max-width: 960px; }
-.timeline__more { margin: 0 0 16px; font-size: .9rem; font-weight: 600; }
+.timeline__more { margin: 8px 0 0; font-size: .9rem; font-weight: 600; }
 .year-group {
   display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 0 24px;
   padding-top: 8px;

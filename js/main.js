@@ -157,7 +157,7 @@
         raw: m, start: start, end: end, year: start.getFullYear(), state: state,
         label: m.dateLabel || formatRange(start, parseDate(m.endDate))
       };
-    }).filter(Boolean).sort(function (a, b) { return a.start - b.start; });
+    }).filter(Boolean).sort(function (a, b) { return b.start - a.start; }); // newest first
 
     // Strategy pages embed this widget as milestones.html?initiative=gpa (etc.)
     // to list only that strategy's milestones.
@@ -179,8 +179,8 @@
     });
     if (upcomingCount) options.push({ value: "upcoming", label: "Upcoming", count: upcomingCount });
 
-    // "All years" starts with only the most recent milestones (upcoming ones are
-    // always last, so they're always shown) and a button to reveal the rest.
+    // "All years" starts with only the most recent milestones (upcoming ones sort
+    // first, so they're always shown) and a button at the end to reveal older ones.
     var RECENT = 5;
     var expanded = false;
 
@@ -192,7 +192,7 @@
       });
       var hiddenCount = filter === "all" && !expanded ? Math.max(0, shown.length - RECENT) : 0;
       var total = shown.length;
-      shown = shown.slice(hiddenCount);
+      shown = shown.slice(0, shown.length - hiddenCount);
 
       var groups = [];
       shown.forEach(function (it) {
@@ -210,14 +210,16 @@
           h("ol", { class: "milestones" }, ...g.items.map(renderMilestone)));
       });
       if (hiddenCount) {
-        var more = h("button", { type: "button", class: "link-button", text: "Show " + plural(hiddenCount, "earlier milestone") });
+        var shownCount = shown.length;
+        var more = h("button", { type: "button", class: "link-button", text: "Show " + plural(hiddenCount, "older milestone") });
         more.addEventListener("click", function () {
           expanded = true;
           render(filter);
-          var first = list.querySelector(".milestone");
-          if (first) first.setAttribute("tabindex", "-1"), first.focus();
+          // Move focus to the first milestone that was just revealed.
+          var next = list.querySelectorAll(".milestone")[shownCount];
+          if (next) { next.setAttribute("tabindex", "-1"); next.focus(); }
         });
-        sections.unshift(h("p", { class: "timeline__more" }, more));
+        sections.push(h("p", { class: "timeline__more" }, more));
       }
       list.replaceChildren.apply(list, sections);
 
