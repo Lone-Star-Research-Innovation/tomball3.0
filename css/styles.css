@@ -475,11 +475,13 @@ h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); color: var(--navy-900); 
 
 /* ---------- Embeddable widgets (widgets/*.html, shown in CMS iframes) ---------- */
 .widget { background: var(--surface); }
-.widget__body { padding: 4px 4px 24px; }
+.widget__body { padding: 4px 0 24px; }
+/* Widgets fill their iframe edge to edge, so draw focus rings inside elements
+   where an outside ring would be clipped by the frame. */
+.widget :focus-visible, .widget .resource:focus-within, .widget .featured:focus-within { outline-offset: -3px; }
 .widget .filter-status { margin-bottom: 16px; }
 .widget .featured { margin-bottom: 28px; }
 .widget__open { font-size: .85rem; margin: 20px 0 0; }
-@media (max-width: 639px) { .widget__body { padding-inline: 2px; } }
 /* Compact spacing so more fits in the fixed-height CMS iframe */
 .widget .milestone { padding-bottom: 10px; }
 .widget .milestone__card { padding: 12px 16px; }
@@ -494,7 +496,7 @@ h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); color: var(--navy-900); 
 .widget .resource-list { gap: 10px; }
 
 /* ---------- What's next (widget) ---------- */
-.widget--next .widget__body { padding: 4px; }
+.widget--next .widget__body { padding: 4px 0; }
 .next {
   display: flex; align-items: center; gap: 16px;
   background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--navy-700);
