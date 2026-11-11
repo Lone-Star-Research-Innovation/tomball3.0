@@ -179,12 +179,20 @@
     });
     if (upcomingCount) options.push({ value: "upcoming", label: "Upcoming", count: upcomingCount });
 
+    // "All years" starts with only the most recent milestones (upcoming ones are
+    // always last, so they're always shown) and a button to reveal the rest.
+    var RECENT = 5;
+    var expanded = false;
+
     function render(filter) {
       var shown = items.filter(function (it) {
         if (filter === "all") return true;
         if (filter === "upcoming") return it.state !== "completed";
         return String(it.year) === filter;
       });
+      var hiddenCount = filter === "all" && !expanded ? Math.max(0, shown.length - RECENT) : 0;
+      var total = shown.length;
+      shown = shown.slice(hiddenCount);
 
       var groups = [];
       shown.forEach(function (it) {
@@ -193,17 +201,30 @@
         g.items.push(it);
       });
 
-      list.replaceChildren.apply(list, groups.map(function (g) {
+      var sections = groups.map(function (g) {
         var headingId = "year-" + g.year;
         return h("section", { class: "year-group", "aria-labelledby": headingId },
           h(HEADING.group, { class: "year-group__label", id: headingId },
             String(g.year),
             h("span", { class: "year-group__count", text: plural(g.items.length, "milestone") })),
           h("ol", { class: "milestones" }, ...g.items.map(renderMilestone)));
-      }));
+      });
+      if (hiddenCount) {
+        var more = h("button", { type: "button", class: "link-button", text: "Show " + plural(hiddenCount, "earlier milestone") });
+        more.addEventListener("click", function () {
+          expanded = true;
+          render(filter);
+          var first = list.querySelector(".milestone");
+          if (first) first.setAttribute("tabindex", "-1"), first.focus();
+        });
+        sections.unshift(h("p", { class: "timeline__more" }, more));
+      }
+      list.replaceChildren.apply(list, sections);
 
       var scope = filter === "all" ? "" : filter === "upcoming" ? " that are upcoming" : " from " + filter;
-      status.textContent = "Showing " + plural(shown.length, "milestone") + scope + ".";
+      status.textContent = hiddenCount
+        ? "Showing the " + plural(shown.length, "most recent milestone") + " of " + total + "."
+        : "Showing " + plural(total, "milestone") + scope + ".";
     }
 
     function renderMilestone(it) {
@@ -234,6 +255,37 @@
 
     renderChips(filters, options, "all", render);
     render("all");
+  }
+
+  /* ---------- What's next ---------- */
+
+  // One-line callout: the next milestone that hasn't finished, or the most
+  // recent completed one when nothing upcoming is in data.js.
+  function initNext() {
+    var el = document.getElementById("next-milestone");
+    if (!el) return;
+    var now = today();
+    var items = (data.milestones || []).map(function (m) {
+      var start = parseDate(m.date);
+      return start ? { raw: m, start: start, end: parseDate(m.endDate) || start } : null;
+    }).filter(Boolean).sort(function (a, b) { return a.start - b.start; });
+    if (!items.length) return;
+
+    var upcoming = items.filter(function (it) { return it.end >= now; })[0];
+    var it = upcoming || items[items.length - 1];
+    var m = it.raw;
+    var label = upcoming ? (it.start > now ? "Coming up" : "In progress") : "Latest milestone";
+
+    el.replaceChildren(h("div", { class: "next" + (upcoming ? " next--upcoming" : "") },
+      h("span", { class: "next__icon", "aria-hidden": "true" }, icon(upcoming ? "arrow" : "check")),
+      h("div", { class: "next__body" },
+        h("p", { class: "next__label", text: label }),
+        h("p", { class: "next__title" },
+          h("time", { datetime: m.date, text: m.dateLabel || formatRange(it.start, parseDate(m.endDate)) }),
+          h("span", { class: "next__sep", "aria-hidden": "true", text: " · " }),
+          m.title)),
+      h("a", { class: "next__link", href: "https://www.lonestar.edu/tomball3-0.htm#milestones", target: "_top" },
+        "All milestones", icon("arrow"))));
   }
 
   /* ---------- Resources ---------- */
@@ -487,6 +539,7 @@
     if (reviewed && reviewedEl) reviewedEl.textContent = formatDate(reviewed);
 
     initMilestones();
+    initNext();
     initResources();
     initTeam();
     initNav();

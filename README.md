@@ -26,6 +26,7 @@ tomball3.0/
 ├── gpa-plus/index.html     CMS version of the GPA+ sub-page (lonestar.edu/118051)
 ├── widgets/
 │   ├── milestones.html     Embeddable timeline with year filter (iframe on the CMS page)
+│   ├── next.html           Embeddable "What's next" bar: next upcoming milestone, or the latest
 │   ├── resources.html      Embeddable resource library with search and categories
 │   └── team.html           Embeddable Core Design Team roster
 ├── modern/index.html       Modern standalone design option
@@ -46,11 +47,11 @@ working on the XR Lab and RIC pages:
 | Technique | Used for | Proven on |
 |-----------|----------|-----------|
 | Plain `<h2>`, `<p>`, `<hr />`, comment banners | Page structure | XR Lab, RIC |
-| `<h2><a id="x"></a>…</h2>` + pipe-separated link bar | In-page navigation | RIC |
+| Empty `<a id="x"></a>` anchors + a navy link bar below the hero | In-page navigation | RIC |
 | `<p class="ratio ratio-16x9"><iframe>` | President's video | XR Lab, RIC |
 | `<a class="btn btn-primary">` | Strategic plan button | XR Lab, RIC |
-| `<div style="width:100%"><iframe … github.io …>` + "Open in a New Window" link | Milestones, Resources, and Core Design Team widgets | RIC (`ric-events`) |
-| Bootstrap `card` / `row` / `col-md-6` classes on `<div>`s | Strategy cards | Classes and `<div>`s survive on RIC; the cards themselves are untested. The team section used to work this way too, but the editor stripped the `<div>`s on save, so it's now a widget like the ones above. |
+| `<div style="width:100%"><iframe … github.io …>` + "Open in a New Window" link | Milestones and Resources widgets | RIC (`ric-events`) |
+| Bootstrap `card` / `row` / `col-md-6` classes on `<div>`s | Hero, strategy cards, and the light/navy section bands | Classes and `<div>`s survive on RIC; the cards themselves are untested. The team section used to work this way too, but the editor stripped the `<div>`s on save, so it's now a widget like the ones above. |
 
 The site already loads **Bootstrap 5.3.3**, so its classes work without adding any CSS.
 The site also automatically adds PDF and external-link icons to matching links.
@@ -63,7 +64,16 @@ and benefit from filtering and search. As GitHub Pages widgets they:
   request**, just a commit to GitHub
 - mark milestones *Completed* or *Upcoming* automatically from the date
 
-The static parts (intro, strategies, team) change rarely, so they live in the CMS.
+The static parts (hero, vision, strategies) change rarely, so they live in the CMS.
+
+The CMS page's layout is based on the modern option: a photo hero (the whole photo, with a
+slim navy bar for the headline and buttons), a navy jump-link bar, the vision section with
+the video and three key facts, the graphic recording, the strategy cards, the two widgets,
+then related links. The strategy cards leave out the College 3.0 framework; each strategy
+page shows its own. Small red "eyebrow" labels above each heading use Bootstrap's
+`text-danger`, the closest class to LSC crimson, and hold the section anchors
+(`<a id="about">Our Vision</a>`) so the anchors aren't empty, because the CMS adds a `<br />`
+after an empty anchor at the start of a heading.
 
 ### Copying into the CMS
 
@@ -76,17 +86,26 @@ The static parts (intro, strategies, team) change rarely, so they live in the CM
 
 The widget iframes point to `https://lone-star-research-innovation.github.io/tomball3.0/widgets/…`.
 **That address assumes a repository named `tomball3.0` in the `lone-star-research-innovation`
-organization.** If you use a different name, update the four URLs (two iframes, two
-"Open in a New Window" links) in the content block, plus the `live` address in the
+organization.** If you use a different name, update the five widget URLs (three iframes, two
+"Open in a New Window" links) in the content block, the widget URLs on the strategy pages, plus the `live` address in the
 preview-only script at the bottom of `index.html`.
 
 ### Iframe heights
 
-The widgets sit in fixed-height iframes, the same as `ric-events`: milestones at
-`height="1400"`, resources at `height="1600"`, team at `height="600"`. Those heights
-fit everything on desktop. On phones the widget scrolls inside its frame, and the
-"Open in a New Window" link gives a full-screen view. If you add many items, raise
-the `height` values.
+The widgets sit in fixed-height iframes, the same as `ric-events`. The CMS won't run a
+script that resizes them, so the heights are set by hand to fit desktop (measured
+November 2026):
+
+| Widget | `height` | Content height on desktop | Notes |
+|--------|----------|---------------------------|-------|
+| `next.html` | 110 | 87 (109 on phones) | One line; the "All milestones" link hides on phones. |
+| `milestones.html` | 800 | 753 | Shows the 5 most recent milestones plus a "Show earlier milestones" button. Expanding scrolls inside the frame. |
+| `resources.html` | 1400 | 1366 | Narrower screens scroll inside the frame. |
+
+On phones the milestones and resources widgets scroll inside their frames, and the
+"Open in a New Window" links give a full-screen view. When you add items, re-check the
+heights: adding resources makes that widget taller, and more milestones only matters if
+you change how many show by default (`RECENT` in `js/main.js`).
 
 ## Previewing locally
 
@@ -129,8 +148,7 @@ navy goal-statement callout, description, College 3.0 Framework cards, page-spec
 lists, and links to the other strategies. Neurodiversity embeds the milestones widget
 filtered with `?initiative=neurodiversity`, three "What We Heard" quotes from the
 [Feedback Forum Results by Initiative](https://www.lonestar.edu/departments/academicaffairsstusuccess/Feedback%20Forum%20Results%20by%20Initiative.pdf)
-(cited on the page; checked word for word against the PDF), and the team widget
-(`team.html?team=neurodiversity`). No milestones are tagged `249` yet, so the
+(cited on the page; checked word for word against the PDF). No milestones are tagged `249` yet, so the
 249 page keeps its dated lists in the content block.
 
 ### GPA+ sub-page
@@ -147,7 +165,6 @@ the CMS the same way (the block between the BEGIN/END markers). Sections:
 | Progress | Milestones widget filtered to GPA+ (`milestones.html?initiative=gpa`) | `js/data.js` |
 | What We Heard | Three themes, each with a participant quote | **New:** Feedback Forum Results by Initiative (cited on the page) |
 | Resources | News story, Dell agenda, forum results, strategic plan | Existing official documents |
-| GPA+ Team | Team widget (`team.html?team=gpa`): 10 names in two group cards | Current page (provisional); edit in `data.js` → `strategyTeams.gpa` |
 
 The two **New** sections add official content that isn't on the current page. Remove
 them if they should stay off the page until approved.
@@ -212,6 +229,12 @@ To add a category, add its name to `resourceCategories`. That list also controls
 order of categories. Categories with no items are hidden automatically.
 
 ### Update the Core Design Team
+
+> **Removed from the CMS pages and the modern option (November 2026).** The Core Design Team, GPA+ team,
+> and Neurodiversity Center team sections were taken off the main page and the
+> strategy pages because current membership is unconfirmed. The widget and the
+> rosters in `data.js` are kept, so a section can be restored by re-embedding
+> `widgets/team.html` once the names are confirmed.
 
 Like milestones and resources, the team roster is edited in one place — the `team`
 list in `data.js` — and rendered by both `widgets/team.html` (embedded on the CMS
@@ -302,6 +325,7 @@ YouTube video has accurate captions (WCAG 1.2.2).
 | 13 | **GPA+ statistics** | The NACE Job Outlook 2025 figures (75% → 46%) and LinkedIn's 69% come from the current page and strategic plan, which give no direct citation links. Confirm them, and consider linking the reports. |
 | 14 | **GPA+ quotation fix** | The current page opens a quote it never closes ("…and “demonstrated proficiency in competencies replace GPA."). The redesign quotes only *demonstrated proficiency in competencies*. Confirm that matches the NACE report. |
 | 15 | **GPA+ page title** | The CMS title is "Transferable Skills Benchmark GPA +" (with a space before the +). The preview uses "GPA+ \| Transferable Skills Benchmark", like "249 Corridor of Opportunity \| Team 249". The title is a CMS page setting, so ask the web team to rename it; see item 3. |
+| 16 | **Graphic recording links** | Both files are uploaded to the CMS. The main page uses the CMS's internal reference (`/cms/ioLoadImage.asp?FolderGuid=CFA57134BDEF4EB480776960BE986982/…`), copied from what the CMS saved; the CMS rewrites it to the public address on publish. After publishing, check that the image and "View full size" load. The preview shows the copies in `assets/`. |
 
 All 16 links from the official 3.0 page returned HTTP 200 on 2026-10-13.
 # tomball3.0

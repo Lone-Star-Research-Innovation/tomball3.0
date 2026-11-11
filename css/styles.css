@@ -298,6 +298,7 @@ h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); color: var(--navy-900); 
 
 /* ---------- Timeline ---------- */
 .timeline { max-width: 960px; }
+.timeline__more { margin: 0 0 16px; font-size: .9rem; font-weight: 600; }
 .year-group {
   display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 0 24px;
   padding-top: 8px;
@@ -491,3 +492,26 @@ h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.4rem); color: var(--navy-900); 
 .widget .resource-group + .resource-group { margin-top: 24px; }
 .widget .resource-group__title { margin-bottom: 10px; }
 .widget .resource-list { gap: 10px; }
+
+/* ---------- What's next (widget) ---------- */
+.widget--next .widget__body { padding: 4px; }
+.next {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--navy-700);
+  border-radius: var(--radius-sm); padding: 14px 18px;
+}
+.next__icon {
+  flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--navy-100); color: var(--navy-800);
+}
+.next--upcoming .next__icon { background: var(--amber-bg); color: var(--amber-ink); }
+.next__body { flex: 1; min-width: 0; }
+.next__label { margin: 0; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--navy-700); }
+.next__title { margin: 2px 0 0; font-weight: 600; color: var(--navy-900); }
+.next__title time { color: var(--ink-muted); font-weight: 500; }
+.next__link { flex: none; display: inline-flex; align-items: center; gap: .35em; font-weight: 600; font-size: .9rem; text-decoration: none; }
+.next__link:hover { text-decoration: underline; }
+@media (max-width: 539px) {
+  .next { padding: 12px 14px; gap: 12px; }
+  .next__link { display: none; }
+}
