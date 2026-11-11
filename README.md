@@ -144,13 +144,23 @@ the exact admissions look, the web team would switch the page to that template.
 
 ## Strategy sub-pages
 
-The 249 Corridor and Neurodiversity pages share one simple layout: page photo (or map),
-navy goal-statement callout, description, College 3.0 Framework cards, page-specific
-lists, and links to the other strategies. Neurodiversity embeds the milestones widget
-filtered with `?initiative=neurodiversity`, three "What We Heard" quotes from the
+All three strategy pages follow the main page's layout:
+
+1. **Photo hero:** the page photo (or the 249 map) shown whole, with a slim navy bar
+   under it holding the goal statement.
+2. **Jump-link bar:** a navy bar of in-page links (sections differ per page).
+3. **Sections:** each opens with a small red label and an `h2`; the label holds the
+   anchor (`<a id="framework">The Path Forward</a>`) so no anchor is empty.
+4. **College 3.0 Framework:** the 1.0 → 3.0 cards in a light gray band.
+5. **Milestones:** the milestones widget filtered to that strategy (GPA+ and
+   Neurodiversity). No milestones are tagged `249` yet, so the 249 page keeps its dated
+   "Updates" lists in the content block.
+6. **Other Strategies:** a navy strip linking the other two strategies and the main page,
+   then Back to Top.
+
+Neurodiversity also has three "What We Heard" quotes from the
 [Feedback Forum Results by Initiative](https://www.lonestar.edu/departments/academicaffairsstusuccess/Feedback%20Forum%20Results%20by%20Initiative.pdf)
-(cited on the page; checked word for word against the PDF). No milestones are tagged `249` yet, so the
-249 page keeps its dated lists in the content block.
+(cited on the page; checked word for word against the PDF).
 
 ### GPA+ sub-page
 
@@ -159,13 +169,13 @@ the CMS the same way (the block between the BEGIN/END markers). Sections:
 
 | Section | Content | Source |
 |---------|---------|--------|
-| About GPA+ | Goal statement and description | Current page (punctuation fixed) |
+| Hero + About GPA+ | Goal statement (in the hero) and description | Current page (punctuation fixed) |
 | Why It Matters | Two stat cards (75% → 46%, 69%) plus the full paragraph | Current page; quotation marks fixed |
 | Problems GPA+ Addresses | Four numbered problems | **New:** strategic plan, page 9 (cited on the page) |
 | College 3.0 Framework | Three cards, 1.0 → 3.0 | Current page |
 | Progress | Milestones widget filtered to GPA+ (`milestones.html?initiative=gpa`) | `js/data.js` |
 | What We Heard | Three themes, each with a participant quote | **New:** Feedback Forum Results by Initiative (cited on the page) |
-| Resources | News story, Dell agenda, forum results, strategic plan | Existing official documents |
+| Resources | News story, Dell agenda, forum results, strategic plan (gray band) | Existing official documents |
 
 The two **New** sections add official content that isn't on the current page. Remove
 them if they should stay off the page until approved.
