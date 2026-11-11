@@ -157,7 +157,15 @@ All three strategy pages follow the main page's layout:
 2. **Jump-link bar:** a navy bar of in-page links (sections differ per page).
 3. **Sections:** each opens with a small red label and an `h2`; the label holds the
    anchor (`<a id="framework">The Path Forward</a>`) so no anchor is empty.
-4. **College 3.0 Framework:** the 1.0 → 3.0 cards in a light gray band.
+4. **College 3.0 Framework:** the 1.0 → 3.0 cards in a light gray band, with a source
+   line linking to that page of the strategic plan.
+
+   **Strategic plan page links** use `#page=N` on the PDF URL, which opens the browser's
+   PDF viewer at that page. Pages: 249 starts on page 4 (framework page 5),
+   Neurodiversity page 6 (framework page 7), GPA+ page 8 (framework page 9, continuing to
+   page 10). The hero's "Strategic Plan (PDF)" button opens at the section start. Adding
+   `#page=` means the site's automatic PDF icon (`a[href$=".pdf"]`) no longer applies, so
+   the link text says "PDF" instead. If the plan PDF is replaced, re-check these numbers.
 5. **Milestones:** the milestones widget filtered to that strategy (GPA+ and
    Neurodiversity). No milestones are tagged `249` yet, so the 249 page keeps its dated
    "Updates" lists in the content block.
