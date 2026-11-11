@@ -51,8 +51,8 @@
 
 <!-- ===================== BEGIN CMS CONTENT ===================== -->
 <!-- The site header CSS sets body { width: 100vw }, which is wider than the window when a scrollbar shows,
-     so content touches the right edge. This line undoes that. If the CMS strips it, nothing else breaks. -->
-<style>body{width:auto!important}</style>
+     so content runs under the scrollbar. This stylesheet undoes that. If the CMS strips the tag, nothing shows. -->
+<link rel="stylesheet" href="https://lone-star-research-innovation.github.io/tomball3.0/css/cms-fix.css" />
 <p><a id="BackToTop" name="BackToTop"></a></p>
 <!-- Layout mirrors modern/index.html, using only Bootstrap 5.3 classes the site already loads (no inline styles). -->
 <!-- ========================= --><!--          HERO             --><!-- ========================= -->
@@ -206,6 +206,9 @@
     });
     var live = "https://lone-star-research-innovation.github.io/tomball3.0/";
     if (location.href.indexOf(live) === 0) return;
+    document.querySelectorAll('link[href^="' + live + '"]').forEach(function (l) {
+      l.setAttribute("href", l.getAttribute("href").replace(live, ""));
+    });
     document.querySelectorAll('a[href^="' + live + '"]').forEach(function (a) {
       a.setAttribute("href", a.getAttribute("href").replace(live, ""));
     });

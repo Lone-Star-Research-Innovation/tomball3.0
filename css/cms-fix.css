@@ -1,0 +1,6 @@
+/*
+ * Loaded by the CMS pages (lonestar.edu) through a <link> at the top of the content.
+ * The site's /css/header/header.css sets body { width: 100vw }, which is wider than the
+ * window whenever a scrollbar shows, so content runs under the scrollbar on the right.
+ */
+body { width: auto !important; }
