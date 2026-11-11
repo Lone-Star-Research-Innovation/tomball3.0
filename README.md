@@ -51,6 +51,7 @@ working on the XR Lab and RIC pages:
 | `<p class="ratio ratio-16x9"><iframe>` | President's video | XR Lab, RIC |
 | `<a class="btn btn-primary">` | Strategic plan button | XR Lab, RIC |
 | `<div style="width:100%"><iframe … github.io …>` + "Open in a New Window" link | Milestones and Resources widgets | RIC (`ric-events`) |
+| One-line `<style>body{width:auto!important}</style>` at the top of each page's content | Stops content touching the right edge | The site's `/css/header/header.css` sets `body { width: 100vw }`, which is wider than the window whenever a scrollbar shows (Windows), so content is cut off on the right. **Untested in the CMS:** inline `style="…"` attributes are stripped, but whether a `<style>` block survives is unknown. If it's stripped, nothing breaks; the right edge just stays tight. The real fix is for the web team to change that rule to `width: 100%`. |
 | Bootstrap `card` / `row` / `col-md-6` classes on `<div>`s | Hero, strategy cards, and the light/navy section bands | Classes and `<div>`s survive on RIC; the cards themselves are untested. The team section used to work this way too, but the editor stripped the `<div>`s on save, so it's now a widget like the ones above. |
 
 The site already loads **Bootstrap 5.3.3**, so its classes work without adding any CSS.

@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="https://www.lonestar.edu/css-refresh/content-page.css">
 <link rel="stylesheet" href="https://www.lonestar.edu/css-refresh/legacy.css">
 <link rel="stylesheet" href="https://www.lonestar.edu/css-refresh/fonts.css">
+<link rel="stylesheet" href="https://www.lonestar.edu/css/header/header.css">
+<link rel="stylesheet" href="https://www.lonestar.edu/css/header/lsc.css">
 </head>
 <body class="standard-content-wide">
 
@@ -48,6 +50,9 @@
       <div class="content-well">
 
 <!-- ===================== BEGIN CMS CONTENT ===================== -->
+<!-- The site header CSS sets body { width: 100vw }, which is wider than the window when a scrollbar shows,
+     so content touches the right edge. This line undoes that. If the CMS strips it, nothing else breaks. -->
+<style>body{width:auto!important}</style>
 <p><a id="BackToTop" name="BackToTop"></a></p>
 <p><img class="img-fluid rounded shadow-sm" src="https://www.lonestar.edu/departments/academicaffairsstusuccess/Map%20of%20Opportunity.jpg" alt="Map of the 249 Corridor of Opportunity: SH-249 runs from LSC-University Park north through LSC-Tomball, including its Veterinary Technology and Health Science buildings, to the LSC-Magnolia Center." /></p>
 <!-- ========================= --><!--       GOAL STATEMENT      --><!-- ========================= -->
