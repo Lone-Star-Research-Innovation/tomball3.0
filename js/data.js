@@ -101,14 +101,14 @@ window.TOMBALL3 = {
       endDate: "2025-10-21",
       initiative: ["gpa", "neurodiversity"],
       title: "Initiative team meetings",
-      description: "GPA+ team met October 20; Neurodiversity Center team met October 21."
+      description: "GPA+ team met October 20; INACS team met October 21."
     },
     {
       date: "2025-11-03",
       endDate: "2025-11-04",
       initiative: ["gpa", "neurodiversity"],
       title: "Initiative sprint meetings",
-      description: "GPA+ initiative sprint on November 3; Neurodiversity Center initiative sprint on November 4."
+      description: "GPA+ initiative sprint on November 3; INACS initiative sprint on November 4."
     },
     {
       date: "2025-11-05",
@@ -235,6 +235,14 @@ window.TOMBALL3 = {
       url: "https://www.lonestar.edu/news/119319.htm",
       type: "web",
       date: "2026-06-24"
+    },
+    {
+      title: "What Higher Ed Can Learn From the Curb Cut Effect",
+      description: "Article by LSC-Tomball President Dr. Lee Ann Nutt in The EvoLLLution on extending lessons from lifePATH to all students.",
+      category: "News & Partners",
+      url: "https://evolllution.com/what-higher-ed-can-learn-from-the-curb-cut-effect",
+      type: "web",
+      date: "2026-07-29"
     },
     {
       title: "Reimagining Community Colleges Design Challenge",

@@ -8,7 +8,7 @@ There are two versions:
 | Version | File | What it is |
 |---------|------|------------|
 | **CMS version (main)** | `index.html` | Built within the limits of the college CMS, using the same techniques as the [XR Lab](https://www.lonestar.edu/Tomball-XR-Lab) and [RIC](https://www.lonestar.edu/tomball-ric) pages. This is the version intended for lonestar.edu. |
-| **Strategy sub-pages (CMS)** | `corridor-249/`, `neurodiversity/`, `gpa-plus/` | Redesigns of the three strategy pages: [249 Corridor](https://www.lonestar.edu/118049), [Neurodiversity Center](https://www.lonestar.edu/118050), and [GPA+](https://www.lonestar.edu/118051). Lighter versions of the main page's look. |
+| **Strategy sub-pages (CMS)** | `corridor-249/`, `neurodiversity/`, `gpa-plus/` | Redesigns of the three strategy pages: [249 Corridor](https://www.lonestar.edu/118049), [Institute for Neurodiversity in Academic and Career Success](https://www.lonestar.edu/118050), and [GPA+](https://www.lonestar.edu/118051). Lighter versions of the main page's look. |
 | **Modern option** | `modern/index.html` | A fully custom standalone design. It shows what the page could look like without CMS limits, and it's the source of the CMS version's interactive widgets. |
 
 Both are plain HTML, CSS, and JavaScript, with no framework, no build step, and
@@ -51,7 +51,7 @@ working on the XR Lab and RIC pages:
 | `<p class="ratio ratio-16x9"><iframe>` | President's video | XR Lab, RIC |
 | `<a class="btn btn-primary">` | Strategic plan button | XR Lab, RIC |
 | `<div style="width:100%"><iframe … github.io …>` + "Open in a New Window" link | Milestones and Resources widgets | RIC (`ric-events`) |
-| `<link rel="stylesheet">` to `css/cms-fix.css` on GitHub Pages, at the top of each page's content | Stops content running under the scrollbar on the right | The site's `/css/header/header.css` sets `body { width: 100vw }`, wider than the window whenever a scrollbar shows (Windows). A `<style>` block does **not** work: the CMS strips the tags and leaves the CSS text visible on the page. Whether the CMS keeps `<link>` is untested; if it strips it, nothing shows. The real fix is for the web team to change that rule to `width: 100%`. |
+| *(Removed 2026-11-17, pending Web Team review)* `<link rel="stylesheet">` to `css/cms-fix.css` on GitHub Pages | Stopped content running under the scrollbar on the right | The site's `/css/header/header.css` sets `body { width: 100vw }`, wider than the window whenever a scrollbar shows (Windows). A `<style>` block does **not** work: the CMS strips the tags and leaves the CSS text visible on the page. Whether the CMS keeps `<link>` is untested; if it strips it, nothing shows. The real fix is for the web team to change that rule to `width: 100%`. |
 | Bootstrap `card` / `row` / `col-md-6` classes on `<div>`s | Hero, strategy cards, and the light/navy section bands | Classes and `<div>`s survive on RIC; the cards themselves are untested. The team section used to work this way too, but the editor stripped the `<div>`s on save, so it's now a widget like the ones above. |
 
 The site already loads **Bootstrap 5.3.3**, so its classes work without adding any CSS.
@@ -89,6 +89,15 @@ adding those classes to new paragraphs.
 4. **Full width, no sidebar.** The design assumes the page uses the CMS's full-width
    (no-sidebar) layout. The sidebar is a template setting, not part of the content, so
    ask the web team to turn it off for the 3.0 page and its three strategy pages.
+
+> **Widgets are currently off (2026-11-17).** The LSC Web Design Guidelines require Web Team
+> review before any iFrame or outside code goes on a page. Until that's approved, the four CMS
+> pages carry plain-HTML copies of the milestones and resources from `js/data.js` (marked
+> "copied from js/data.js" in the source), and the "latest milestone" bars are removed. Edit
+> those lists directly in the CMS. When `data.js` changes, update the pages by hand too. The
+> `cms-fix.css` link is also removed, so on Windows the content runs under the scrollbar
+> until the web team fixes `header.css`. The YouTube video embed is still on the main page. The notes below describe the widget setup
+> for when it's approved.
 
 The widget iframes point to `https://lone-star-research-innovation.github.io/tomball3.0/widgets/…`.
 **That address assumes a repository named `tomball3.0` in the `lone-star-research-innovation`
@@ -266,7 +275,7 @@ order of categories. Categories with no items are hidden automatically.
 ### Update the Core Design Team
 
 > **Removed from the CMS pages and the modern option (November 2026).** The Core Design Team, GPA+ team,
-> and Neurodiversity Center team sections were taken off the main page and the
+> and Institute for Neurodiversity in Academic and Career Success team sections were taken off the main page and the
 > strategy pages because current membership is unconfirmed. The widget and the
 > rosters in `data.js` are kept, so a section can be restored by re-embedding
 > `widgets/team.html` once the names are confirmed.
