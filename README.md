@@ -9,6 +9,7 @@ There are two versions:
 |---------|------|------------|
 | **CMS version (main)** | `index.html` | Built within the limits of the college CMS, using the same techniques as the [XR Lab](https://www.lonestar.edu/Tomball-XR-Lab) and [RIC](https://www.lonestar.edu/tomball-ric) pages. This is the version intended for lonestar.edu. |
 | **Strategy sub-pages (CMS)** | `corridor-249/`, `neurodiversity/`, `gpa-plus/` | Redesigns of the three strategy pages: [249 Corridor](https://www.lonestar.edu/118049), [Institute for Neurodiversity in Academic and Career Success](https://www.lonestar.edu/118050), and [GPA+](https://www.lonestar.edu/118051). Lighter versions of the main page's look. |
+| **Plain version** | `plain/` (`index.html` plus the three strategy pages) | The same content with all Bootstrap layout removed: only headings, paragraphs, lists, `<hr />`, images, and links. No cards, bands, icons, buttons, accordions, or spacing classes; the only classes left are `img-fluid` on images and `ratio ratio-16x9` on the video. Copied into the CMS the same way (BEGIN/END markers). Strategy links in the preview go to the other plain pages. |
 | **Modern option** | `modern/index.html` | A fully custom standalone design. It shows what the page could look like without CMS limits, and it's the source of the CMS version's interactive widgets. |
 
 Both are plain HTML, CSS, and JavaScript, with no framework, no build step, and
